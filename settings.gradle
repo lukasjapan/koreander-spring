@@ -1,0 +1,5 @@
+rootProject.name = 'koreander-spring'
+
+include ':koreander'
+project(':koreander').projectDir = new File("../koreander")
+
