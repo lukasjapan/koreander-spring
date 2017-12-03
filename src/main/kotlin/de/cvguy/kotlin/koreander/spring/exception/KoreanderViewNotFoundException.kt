@@ -1,4 +1,4 @@
-package de.cvguy.kotlin.koreander.spring
+package de.cvguy.kotlin.koreander.spring.exception
 
 class KoreanderViewNotFoundException(
         viewName: String,

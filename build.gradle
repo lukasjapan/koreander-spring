@@ -30,6 +30,8 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
     compile "de.cvguy.kotlin:koreander:0.1-WIP"
+    compile group: 'javax.cache', name: 'cache-api', version: '1.0.0'
+
 }
 
 compileKotlin {
