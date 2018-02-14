@@ -20,7 +20,7 @@ inline fun <reified T : Any>ModelAndView(template: String, context:  T): ModelAn
 inline fun <reified T : Any>Model.setKoreanderContext(context:  T) {
     addAttribute("context", context)
 
-    // add type only if necessary for performance
+    // add type only if necessary (better performance)
     if(context::class.typeParameters.isNotEmpty()) {
         addAttribute("type", Koreander.typeOf(context))
     }

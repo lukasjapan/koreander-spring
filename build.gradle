@@ -1,6 +1,3 @@
-group 'de.cvguy.kotlin'
-version '1.0-SNAPSHOT'
-
 buildscript {
     ext.kotlinVersion = '1.1.61'
     ext.springBootVersion = '2.0.0.M6'
@@ -13,24 +10,54 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion"
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
 }
 
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+}
+
+def koreanderSpringGroup = 'de.cvguy.kotlin'
+def koreanderSpringName = 'koreander-spring'
+def koreanderSpringVersion = '0.1-WIP'
+
+group koreanderSpringGroup
+version koreanderSpringVersion
+
 apply plugin: 'kotlin'
 apply plugin: 'kotlin-spring'
+apply plugin: 'maven'
+apply plugin: 'com.jfrog.bintray'
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    pkg {
+        repo = koreanderSpringGroup
+        name = koreanderSpringName
+        licenses = ['MIT']
+        vcsUrl = "https://github.com/lukasjapan/koreander-spring.git"
+        version {
+            name = koreanderSpringVersion
+            desc = 'Spring integration for the Koreander template engine.'
+        }
+    }
+    configurations = ['archives']
+}
 
 repositories {
-    mavenCentral()
+    jcenter()
     maven { url 'https://repo.spring.io/milestone' }
-    flatDir { dirs '../koreander/build/libs' }
+    maven { url  "https://dl.bintray.com/lukasjapan/de.cvguy.kotlin" }
 }
 
 dependencies {
+    // TODO: Proper dependencies
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlinVersion"
     compile "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
     compile "de.cvguy.kotlin:koreander:0.1-WIP"
-    compile group: 'javax.cache', name: 'cache-api', version: '1.0.0'
 
 }
 
