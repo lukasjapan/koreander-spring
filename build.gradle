@@ -1,6 +1,5 @@
 buildscript {
     ext.kotlinVersion = '1.1.61'
-    ext.springBootVersion = '2.0.0.M6'
 
     repositories {
         mavenCentral()
@@ -9,7 +8,6 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion"
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
 }
@@ -20,7 +18,7 @@ plugins {
 
 def koreanderSpringGroup = 'de.cvguy.kotlin'
 def koreanderSpringName = 'koreander-spring'
-def koreanderSpringVersion = '0.1-WIP'
+def koreanderSpringVersion = '0.0.1'
 
 group koreanderSpringGroup
 version koreanderSpringVersion
@@ -56,8 +54,8 @@ dependencies {
     // TODO: Proper dependencies
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlinVersion"
     compile "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
-    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
-    compile "de.cvguy.kotlin:koreander:0.1-WIP"
+    compile "org.springframework:spring-webmvc:+"
+    compile "de.cvguy.kotlin:koreander:0.+"
 
 }
 
