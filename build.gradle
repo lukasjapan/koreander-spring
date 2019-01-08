@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlinVersion = '1.1.61'
+    ext.kotlinVersion = '1.+'
 
     repositories {
         mavenCentral()
@@ -18,7 +18,7 @@ plugins {
 
 def koreanderSpringGroup = 'de.cvguy.kotlin'
 def koreanderSpringName = 'koreander-spring'
-def koreanderSpringVersion = '0.0.1'
+def koreanderSpringVersion = '0.0.2'
 
 group koreanderSpringGroup
 version koreanderSpringVersion
@@ -51,8 +51,7 @@ repositories {
 }
 
 dependencies {
-    // TODO: Proper dependencies
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlinVersion"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     compile "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
     compile "org.springframework:spring-webmvc:+"
     compile "javax.servlet:javax.servlet-api:+"
